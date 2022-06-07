@@ -82,4 +82,3 @@ if (gw is not None)&(bp is not None):
 
     st.subheader("Download baro-corrected groundwater pressure dataset")
     st.download_button("Download as CSV",  gw.to_csv().encode('utf-8'), "gw_corrected.csv")
-    st.download_button("Download as XLSX", gw.to_excel(), "gw_corrected.xlsx")
