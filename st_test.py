@@ -22,6 +22,7 @@ bp = st.file_uploader("Upload dataset", type=["csv"], key='bp')
 
 if (gw is not None)&(bp is not None):
 
+    st.subheader("Analyse and plot input datasets")
     gw = pd.read_csv(gw, index_col=0, skiprows=1, names=['Datetime', 'Pgw_mH2O'])
     bp = pd.read_csv(bp, index_col=0, skiprows=1, names=['Datetime', 'Pba_mH2O'])
     
@@ -78,3 +79,7 @@ if (gw is not None)&(bp is not None):
     s.grid(True)
     f.tight_layout()
     st.pyplot(f)
+
+    st.subheader("Download baro-corrected groundwater pressure dataset")
+    st.download_button("Download as CSV",  gw.to_csv().encode('utf-8'), "gw_corrected.csv")
+    st.download_button("Download as XLSX", gw.to_excel(), "gw_corrected.xlsx")
